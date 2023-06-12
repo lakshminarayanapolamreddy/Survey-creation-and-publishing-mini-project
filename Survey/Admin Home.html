@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<link rel = "icon" type="image/x-icon" href= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRenjshLRLxBp9H1WJ_Qma2dr5lsn0jMjcUyQ&usqp=CAU">
+	
+  <style>
+	nav {
+		  background-color: rgba(230,21,8,0.875);
+		  text-align:center;
+		  
+		}
+
+		ul {
+		  list-style-type: none;
+		  margin: 2%;
+		  padding: 0;
+		}
+
+		li {
+		  display: inline-block;
+		}
+
+		li a {
+		  display: block;
+		  color:rgb(226,224,224);
+		  text-decoration: none;
+		  padding: 15px;
+		}
+
+		li a:hover {
+		  background-color:rgb(226,224,224);
+		  color:rgb(228,50,3);
+		  font-size:16px;
+		}
+	.form-container 
+	{
+	  display: flex;
+	  flex-direction: column;
+	  align-items: flex-start;
+	  margin-left:1%;
+	  font-size:17px;
+	}
+
+	.form-container form button
+	{
+	  display: flex;
+	  align-items: flex-start;
+	  margin-left: auto;
+	  background:rgb(220,50,3);
+	  font-family:Lucida Bright;
+	cursor:pointer;
+	outline:none;
+	color:rgb(226,224,224);
+	border-radius:5px;
+	transition:0.08s;
+	border: 1px solid rgb(228,50,3);
+	
+	}
+	.form-container form button:hover{
+		color:rgb(228,50,3);
+		background:rgb(226,224,224);
+		
+	}
+	.submit{
+	 background:rgb(220,50,3);
+	cursor:pointer;
+	outline:none;
+	font-family:Lucida Bright;
+	color:rgb(226,224,224);
+	border-radius:5px;
+	transition:0.1s;
+	border: 1px solid rgb(228,50,3);
+	}
+	.submit:hover{
+		color:rgb(228,50,3);
+		 background:rgb(226,224,224);
+		 
+		
+	}
+	.title{
+		margin-left:14%;
+		
+	}
+	.title2{
+		margin-left:1%;
+		font-size:17px;
+	}
+	.nav-bar{
+		
+	}
+	.nav-bar li a, .dropbtn {
+  display: inline-block;
+  
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background:rgb(220,50,3);
+ 
+  
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.container1{
+	width:50%;
+	height:100%;
+	position:absolute;
+	left:0;
+}
+.container2{
+	width:50%;
+	height:100%;
+	position:absolute;
+	right:0;
+}
+.content{
+	width:450px;
+	margin:0 auto;
+	position:absolute;
+	top:14%;
+	left:5%;
+	margin-top:8%;
+	
+}
+.container2 button{
+	margin-top:12%;
+	margin-left:0%;
+}
+.no-scroll{
+      display: block;
+    }
+  </style>
+</head>
+<body>
+	<nav>
+	<ul class = "nav-bar">
+      <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home   
+	  &nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+      <li><a href="#">  
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	  About &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </a></li>
+      <li><a href="#">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Services
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+      <li><a href="#">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	  <li class="dropdown">
+	  <a href="#" class="dropbtn">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surveys
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	  <div class="dropdown-content">
+        <a href="display_published.php">Published Surveys</a><br>
+		<a href = "display_drafts.php">Drafts</a>
+     </div>
+	 </li> 
+	  <li><a href="#">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	  <li><a href="#">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Responses
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	  <li><a href="Home.html">&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logout
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+    </ul>
+	</nav><br><br>
+	
+	<div class = "container2">
+    <div id="content" class = "content"></div>
+	<button class = "submit" id="loadContentButton">Preview Questions</button>
+        
+	</div>
+	</div>
+	<div class = "container1">
+    <h2 class = "title">Questions</h2>
+	<br><br>
+	
+		<form class = "title2" method = "POST" action = "redirect.php">
+		  <label for="inputField"><b>Enter survey name here:</b></label>
+		  <input type="text" name="title" id = "survey_title"required />
+		  <button class = "submit" name="Draft" type="submit" value="submit">&nbsp;&nbsp;&nbsp;Draft&nbsp;&nbsp;&nbsp;</button>
+		  <button class = "submit" name="Survey" type="submit" value="submit">&nbsp;Publish&nbsp;</button><br>
+		</form><br><br>
+		
+		
+		<div class="form-container">
+		<form action = "add_question.php" method = "POST">
+			What is the name of your mentor?
+			<div class="question"><input type="hidden" name="question" value="What is the name of your mentor?">
+			<input type="hidden" name="type" value="radio">
+			
+			<button type="submit">Add</button>
+		</form><br>
+		 
+		
+		
+		<form action="add_question.php" method="post">
+			What is the name of your project?
+			<div class="question"><input type="hidden" name="question" value="What is the name of your project?">
+			<input type="hidden" name="type" value="text">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			when did the project assign?
+			<div class="question"><input type="hidden" name="question" value="when did the project assign?">
+			<input type="hidden" name="type" value="date">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		
+		<form action="add_question.php" method="post">
+			When is the due date for your project?
+			<div class="question"><input type="hidden" name="question" value="When is the due date for your project?">
+			<input type="hidden" name="type" value="date">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			How many hours do you work in a day?
+			<div class="question"><input type="hidden" name="question" value="How many hours do you work in a day?">
+			<input type="hidden" name="type" value="range">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			Is your mentor conducting Scrum meetings thrice a week?
+			<div class="question"><input type="hidden" name="question" value="Is your mentor conducting Scrum meetings thrice a week?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			Did your mentor explained you what the project about?
+			<div class="question"><input type="hidden" name="question" value="Did your mentor explained you what the project about">
+			<input type="hidden" name="type" value="Radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			Is your mentor solving your doubts in the scrum meetings?
+			<div class="question"><input type="hidden" name="question" value="Is your mentor solving your doubts in the scrum meetings?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form ><br>
+		
+		<form action="add_question.php" method="post">
+			How do you rate your mentor out of 10?
+			<div class="question"><input type="hidden" name="question" value="How do you rate your mentor out of 10?">
+			<input type="hidden" name="type" value="checkbox">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		
+		<form action="add_question.php" method="post">
+			Who are your teammates?
+			<div class="question"><input type="hidden" name="question" value="Who are your teammates?">
+			<input type="hidden" name="type" value="text">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post"> 
+			Have you planned how to complete your project into different tasks?
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<div class="question"><input type="hidden" name="question" value="Have you planned how to complete your project into different tasks?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		
+		<form action="add_question.php" method="post">
+			How much percentage of project you have completed so far?
+			<div class="question"><input type="hidden" name="question" value="How much percentage of project you have completed so far?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			Will you complete your project on or before the due date?
+			<div class="question"><input type="hidden" name="question" value="Will you complete your project on or before the due date?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			How many tasks does your project contain?
+			<div class="question"><input type="hidden" name="question" value="How many tasks does your project contain?">
+			<input type="hidden" name="type" value="text">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			How many days does it take to complete a single task?
+			<div class="question"><input type="hidden" name="question" value="How many days does it take to complete a single task?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		
+		<form action="add_question.php" method="post">
+			Is the given time to complete your project is sufficient?
+			<div class="question"><input type="hidden" name="question" value="Is the given time to complete your project is sufficient?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		<form action="add_question.php" method="post">
+			Do you need any extra time to complete this project?
+			<div class="question"><input type="hidden" name="question" value="Do you need any extra time to complete this project?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		<form action="add_question.php" method="post">
+			If you need any extra time, How many days do you need?(0 days if NO)
+			<div class="question"><input type="hidden" name="question" value="If you need any extra time, How many days do you need?(0 days if NO)">
+			<input type="hidden" name="type" value="text">
+			<button type="submit">Add</button>
+		</form><br>
+		<form action="add_question.php" method="post">
+			Have you encountered any difficulties in doing the project?
+			<div class="question"><input type="hidden" name="question" value="Have you encountered any difficulties in doing the project?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit">Add</button>
+		</form><br>
+		<form action="add_question.php" method="post">
+			If  yes, What are the difficulties you encountered?
+			<div class="question"><input type="hidden" name="question" value="If  yes, What are the difficulties you encountered?">
+			<input type="hidden" name="type" value="text">
+			<button type="submit">Add</button>
+		</form><br>
+		<form action="add_question.php" method="post">
+			Did your mentor make you to overcome the difficulties?
+			<div class="question"><input type="hidden" name="question" value="Did your mentor make you to overcome the difficulties?">
+			<input type="hidden" name="type" value="radio">
+			<button type="submit" class="no-scroll">Add</button>
+		</form><br>
+		</div>
+		
+		
+	
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+$(document).ready(function() {
+    $("#loadContentButton").click(function() {
+        $.ajax({
+            url: "survey.php",
+            type: "GET",
+            success: function(response) {
+                $("#content").html(response);
+            },
+            error: function() {
+                alert("Error loading content.");
+            }
+        });
+    });
+});
+</script>
+</html>
